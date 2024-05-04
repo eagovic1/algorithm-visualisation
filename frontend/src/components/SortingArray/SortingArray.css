@@ -1,0 +1,13 @@
+#rootSortingArray{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#array{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+}

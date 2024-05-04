@@ -1,5 +1,3 @@
-// empty react component
-
 import React from 'react'
 import './ArrayElement.css'
 
@@ -11,8 +9,8 @@ interface ArrayElementProps {
 
 const ArrayElement = (props: ArrayElementProps) => {
     return (
-        <div className="root">
-            <div className={"arrayElement" + props.tag && " taggedElement"}>
+        <div id="rootArrayElement">
+            <div className={"arrayElement"}>
                 {props.value}
             </div>
             <div className="elementIndex">
