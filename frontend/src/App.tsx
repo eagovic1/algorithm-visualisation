@@ -1,31 +1,49 @@
 import './App.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SortingArray from './components/SortingArray/SortingArray'
 
+enum InstructionType {
+  TAG = "tag",
+  SWAP = "swap",
+  COMPARE = "compare",
+  ASSIGN = "assign"
+}
+
+interface Instruction {
+  type: InstructionType,
+  clear: boolean,
+  operands: number[],
+  description: string
+}
+
 function App() {
-  let [dataFetched, setDataFetched] = useState(false)
-  let array = [3, 7, 1, 5, 4]
-  let instructions = []
-  fetch('http://localhost:5000/api/sort/bubble/steps', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      array: [5, 4, 3, 2, 1],
-    })
-  }).then(response => response.json()).then(data => {
-    instructions = data.instructions
-    setDataFetched(true)
-  }).catch(error => {
-    console.error('Error:', error)
-  });
+  const [dataFetched, setDataFetched] = useState(false)
+  const [instructions, setInstructions] = useState<Instruction[]>([])
+  const array = [5, 4, 3, 2, 1];
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/sort/bubble/steps', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        array: array
+      })
+    }).then(response => response.json()).then(data => {
+      console.log('Success:', data)
+      setInstructions(data)
+      setDataFetched(true)
+    }).catch(error => {
+      console.error('Error:', error)
+    });
+  }, [])
 
   if (!dataFetched)
     return <h1>Loading...</h1>
   return (
     <>
-      <SortingArray instructions={instructions} />
+      <SortingArray instructions={instructions} array={array} />
     </>
   )
 }
