@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
 import "./StepControl.css";
 import LeftArrow from "../../assets/images/left.png";
 import RightArrow from "../../assets/images/right.png";
@@ -12,17 +12,29 @@ interface StepControlProps {
 }
 
 const StepControl = (props: StepControlProps) => {
-  props.setCurrentStep(0);
   const [playing, setPlaying] = useState(false);
 
+  useEffect(() => {
+    props.setCurrentStep(1);
+  }, []);
+
+  useEffect(() => {
+    if (playing) {
+      const timeout = setTimeout(() => {
+        nextStep();
+      }, 1000);
+      return () => clearInterval(timeout);
+    }
+  }, [playing, props.currentStep]);
+
   const nextStep = () => {
-    if (props.currentStep < props.instructionsLength - 1) {
+    if (props.currentStep < props.instructionsLength) {
       props.setCurrentStep(props.currentStep + 1);
     }
   };
 
   const previousStep = () => {
-    if (props.currentStep > 0) {
+    if (props.currentStep > 1) {
       props.setCurrentStep(props.currentStep - 1);
     }
   };

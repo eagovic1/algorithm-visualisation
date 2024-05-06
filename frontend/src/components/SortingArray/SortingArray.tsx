@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrayElement from "../ArrayElement/ArrayElement";
 import StepControl from "../StepControl/StepControl";
 import "./SortingArray.css";
@@ -26,9 +26,13 @@ const SortingArray = (props: SortingArrayProps) => {
   const [currentStep, setCurrentStep] = useState(-1);
   const [taggedElements, setTaggedElements] = useState<number[]>([]);
 
-  console.log(props);
+  // console.log(props);
   let instructions = props.instructions;
   let array = props.array;
+
+  useEffect(() => {
+    console.log("Current step: ", currentStep);
+  }, [currentStep]);
 
   return (
     <div id="rootSortingArray">
@@ -36,10 +40,13 @@ const SortingArray = (props: SortingArrayProps) => {
         {array.map((element, index) => {
           return (
             <>
-              <ArrayElement value={element} index={index}></ArrayElement>
+              <ArrayElement key={index} value={element} index={index}></ArrayElement>
             </>
           );
         })}
+      </div>
+      <div>
+        <h3>STEP: {currentStep}/{instructions.length}</h3>
       </div>
       <StepControl
         currentStep={currentStep}
