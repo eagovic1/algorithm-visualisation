@@ -4,6 +4,7 @@ import LeftArrow from "../../assets/images/left.png";
 import RightArrow from "../../assets/images/right.png";
 import Play from "../../assets/images/play.png";
 import Pause from "../../assets/images/pause.png";
+import Restart from "../../assets/images/restart.png";
 
 interface StepControlProps {
   currentStep: number;
@@ -47,19 +48,24 @@ const StepControl = (props: StepControlProps) => {
     setPlaying(true);
   };
 
+  const restart = () => (
+    props.setCurrentStep(1)
+  )
+
+
   return (
     <div className="stepControl">
-      <button onClick={previousStep}>
-        <img className="controlIcon" src={LeftArrow} alt="Previous" />
+      <button onClick={play}>
+        <img className="controlIcon" src={Play} alt="Play" />
       </button>
       <button onClick={pause}>
         <img className="controlIcon" src={Pause} alt="Pause" />
       </button>
-      <button onClick={play}>
-        <img className="controlIcon" src={Play} alt="Play" />
-      </button>
       <button onClick={nextStep}>
-        <img className="controlIcon" src={RightArrow} alt="Next" />    
+        <img className="controlIcon" src={RightArrow} alt="Next" />
+      </button>
+      <button onClick={restart}>
+        <img className="controlIcon" src={Restart} alt="Restart" />
       </button>
     </div>
   );

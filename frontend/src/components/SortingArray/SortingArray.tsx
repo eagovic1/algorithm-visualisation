@@ -47,12 +47,13 @@ const SortingArray = (props: SortingArrayProps) => {
       </div>
       <div>
         <h3>STEP: {currentStep}/{instructions.length}</h3>
+        <h3>{instructions[currentStep - 1]["description"]}</h3>
       </div>
       <StepControl
         currentStep={currentStep}
         instructionsLength={instructions.length}
         setCurrentStep={setCurrentStep}
-      ></StepControl>
+        ></StepControl>
     </div>
   );
 };
