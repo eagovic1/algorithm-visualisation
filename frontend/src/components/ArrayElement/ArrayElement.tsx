@@ -10,7 +10,7 @@ interface ArrayElementProps {
 const ArrayElement = (props: ArrayElementProps) => {
     return (
         <div id="rootArrayElement">
-            <div className={"arrayElement"}>
+            <div className={"arrayElement " + (props.tag && "taggedElement")}>
                 {props.value}
             </div>
             <div className="elementIndex">
