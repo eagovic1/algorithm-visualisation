@@ -25,7 +25,9 @@ interface SortingArrayProps {
 const SortingArray = (props: SortingArrayProps) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [taggedElements, setTaggedElements] = useState<number[]>([]);
-  const [array, setArray] = useState<number[]>(JSON.parse(JSON.stringify(props.array)));
+  const [array, setArray] = useState<number[]>(
+    JSON.parse(JSON.stringify(props.array))
+  );
   /*
     const [taggedElements, setTaggedElements] = useState<object>({});
     taggedElements["0"] = "primary" // tag
@@ -75,7 +77,10 @@ const SortingArray = (props: SortingArrayProps) => {
       setArray((prevArray) => {
         const newArray = [...prevArray];
         const [index1, index2] = instructions[currentStep - 1].operands;
-        [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
+        [newArray[index1], newArray[index2]] = [
+          newArray[index2],
+          newArray[index1],
+        ];
         return newArray;
       });
     }
@@ -83,6 +88,9 @@ const SortingArray = (props: SortingArrayProps) => {
 
   return (
     <div id="rootSortingArray">
+      <div>
+        <h3>{instructions[currentStep - 1]["description"]}</h3>
+      </div>
       <div id="array">
         {array.map((element: number, index: number) => {
           return (
@@ -101,7 +109,6 @@ const SortingArray = (props: SortingArrayProps) => {
         <h3>
           STEP: {currentStep}/{instructions.length}
         </h3>
-        <h3>{instructions[currentStep - 1]["description"]}</h3>
       </div>
       <StepControl
         currentStep={currentStep}
