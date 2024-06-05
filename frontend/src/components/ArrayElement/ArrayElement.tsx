@@ -1,23 +1,24 @@
-import React from 'react'
-import './ArrayElement.css'
+import React from "react";
+import "./ArrayElement.css";
 
 interface ArrayElementProps {
-    value: number,
-    index: number,
-    tag?: string
+  value: number;
+  index: number;
+  tag?: string;
 }
 
 const ArrayElement = (props: ArrayElementProps) => {
-    return (
-        <div id="rootArrayElement">
-            <div className={"arrayElement " + (props.tag && "taggedElement")}>
-                {props.value}
-            </div>
-            <div className="elementIndex">
-                {props.index}
-            </div>
-        </div>
-    )
-}
+  return (
+    <div id="rootArrayElement">
+        <div className="elementIndex">{props.index}</div>
+      <div
+        className={"arrayElement " + (props.tag && "taggedElement")}
+        style={{ height: `${60 + (props.value - 1)*50}px` }}
+      >
+        {props.value}
+      </div>
+    </div>
+  );
+};
 
-export default ArrayElement
+export default ArrayElement;

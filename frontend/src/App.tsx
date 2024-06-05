@@ -19,7 +19,7 @@ interface Instruction {
 function App() {
   const [dataFetched, setDataFetched] = useState(false)
   const [instructions, setInstructions] = useState<Instruction[]>([])
-  const array = [5, 2, 3, 4, 1];
+  const array = [5, 2, 4, 3, 1];
 
   useEffect(() => {
     fetch('http://localhost:3000/api/sort/bubble/steps', {
