@@ -13,7 +13,7 @@ const ArrayElement = (props: ArrayElementProps) => {
         <div className="elementIndex">{props.index}</div>
       <div
         className={"arrayElement " + (props.tag && "taggedElement")}
-        style={{ height: `${60 + (props.value - 1)*50}px` }}
+        style={{ height: `${60 + (props.value - 1)*25}px` }}
       >
         {props.value}
       </div>

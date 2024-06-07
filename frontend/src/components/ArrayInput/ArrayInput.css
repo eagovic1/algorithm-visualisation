@@ -1,0 +1,25 @@
+#rootArrayInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#arraySizeInput {
+  width: 50px;
+  height: 40px;
+  font-size: 30pt;
+  text-align: end;
+  margin-left: 25px;
+  border: solid 3px #00363f;
+  border-radius: 10px;
+}
+
+.arrayElementInput {
+  width: 75px;
+  height: 50px;
+  display: flex;
+  text-align: center;
+  font-size: 35pt;
+  border: solid 1px #00363f;
+}

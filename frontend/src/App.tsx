@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
 import SortingArray from './components/SortingArray/SortingArray'
+import ArrayInput from './components/ArrayInput/ArrayInput'
 
 enum InstructionType {
   TAG = "tag",
@@ -41,6 +42,8 @@ function App() {
 
   if (!dataFetched)
     return <h1>Loading...</h1>
+    else if(true)
+      return <ArrayInput />
   return (
     <>
       <SortingArray instructions={instructions} array={array} />
