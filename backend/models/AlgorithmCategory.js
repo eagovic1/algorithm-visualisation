@@ -1,24 +1,16 @@
 const Sequelize = require("sequelize");
 
 module.exports = function (sequelize) {
-  const user = sequelize.define("user", {
+  const category = sequelize.define("category", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
-    },
-    password: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: true,
     },
   });
-  return user;
+  return category;
 };
