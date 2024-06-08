@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { fetchData } from "../../services/fetch.ts";
 import "./ArrayInput.css";
 
 const ArrayInput = () => {
@@ -7,7 +8,16 @@ const ArrayInput = () => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleClickSort = () => {
-
+    const sort = "bubble";
+    fetchData(`http://localhost:3000/api/sort/${sort}/steps`, "POST", {
+      array: array,
+    })
+      .then((response) => {
+        console.log("Success:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const onChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,12 +46,14 @@ const ArrayInput = () => {
     }
   };
 
-  const handleChangeArraySize = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeArraySize = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     let value = parseInt(event.target.value) || 0;
     if (value < 4) value = 4;
     if (value > 9) value = 9;
     setArraySize(value);
-  }
+  };
 
   useEffect(() => {
     setArray((prevArray) => {
