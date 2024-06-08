@@ -9,7 +9,7 @@ const Header = () => {
           <h1>AlgoViz</h1>
         </div>
         <nav className="nav-links">
-          <Link className='nav-link' to="/">Home</Link>
+          <Link className='nav-link' to="/home">Home</Link>
           <Link className='nav-link' to="/visualisation">Visualisation</Link>
           <Link className='nav-link' to="/comparison">Comparison</Link>
         </nav>

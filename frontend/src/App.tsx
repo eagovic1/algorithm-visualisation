@@ -1,7 +1,10 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
 import SortingArray from './components/SortingArray/SortingArray'
-import ArrayInput from './components/ArrayInput/ArrayInput'
+import HomePage from './pages/HomePage'
+import ArrayInputPage from './pages/ArrayInputPage'
+import Header from './components/Header/Header'
+import { Route, Routes } from 'react-router-dom'
 
 enum InstructionType {
   TAG = "tag",
@@ -18,36 +21,15 @@ interface Instruction {
 }
 
 function App() {
-  const [dataFetched, setDataFetched] = useState(false)
-  const [instructions, setInstructions] = useState<Instruction[]>([])
-  const array = [5, 2, 4, 3, 1];
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/sort/bubble/steps', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        array: array
-      })
-    }).then(response => response.json()).then(data => {
-      console.log('Success:', data)
-      setInstructions(data)
-      setDataFetched(true)
-    }).catch(error => {
-      console.error('Error:', error)
-    });
-  }, [])
-
-  if (!dataFetched)
-    return <h1>Loading...</h1>
-    else if(true)
-      return <ArrayInput />
   return (
     <>
-      <SortingArray instructions={instructions} array={array} />
-    </>
+    <Header />
+    <Routes>
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/visualisation" element={<ArrayInputPage />} /> {}
+      <Route path="/comparison" element={<HomePage />} /> {}
+    </Routes>
+  </>
   )
 }
 
