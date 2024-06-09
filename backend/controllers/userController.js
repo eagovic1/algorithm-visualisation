@@ -35,7 +35,7 @@ function getUserByUsername(username) {
 }
 
 function getLogsByUserId(userId) {
-  const logs = db.log.findAll({
+  const logs = db.logs.findAll({
     where: {
       userId: userId,
     },
@@ -54,7 +54,7 @@ function login(username, password) {
 }
 
 function getRecentAlgorithms(userId) {
-  const logs = db.log.findAll({
+  const logs = db.logs.findAll({
     where: {
       userId: userId,
       action: "visualization",
@@ -64,3 +64,12 @@ function getRecentAlgorithms(userId) {
   });
   return logs;
 }
+
+export default {
+  register,
+  editProfile,
+  getUserByUsername,
+  getLogsByUserId,
+  login,
+  getRecentAlgorithms,
+};
