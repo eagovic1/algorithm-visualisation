@@ -4,24 +4,27 @@ const router = express.Router();
 const sortingController = require("../controllers/sortingController");
 
 router.post("/login", (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-    res.status(200).json(sortingController.login(username, password));
+  let { username, password } = req.body;
+  let user = sortingController.login(username, password);
+  if (!user)
+    return res.status(400).json({ message: "Invalid username or password" });
+  res.status(200).json(user);
 });
 
 router.post("/register", (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-    let email = req.body.email;
-    res.status(200).json(sortingController.register(username, password, email));
+  let { username, password, email } = req.body;
+  let user = sortingController.register(username, password, email);
+  if (!user)
+    return res.status(400).json({ message: "Username already exists" });
+  res.status(200).json(user);
 });
 
 router.put("/edit", (req, res) => {
-    let userId = req.body.userId;
-    let username = req.body.username;
-    let password = req.body.password;
-    let email = req.body.email;
-    res.status(200).json(sortingController.editProfile(userId, username, password, email));
+  let { userId, username, password, email } = req.body;
+  let user = sortingController.editProfile(userId, username, password, email);
+  if (!user)
+    return res.status(400).json({ message: "Username already exists" });
+  res.status(200).json(user);
 });
 
 module.exports = router;
