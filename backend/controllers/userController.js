@@ -1,22 +1,21 @@
 const db = require("../config/db");
 
-function register(username, password, email) {
+async function register(username, password, email) {
   try {
-    const user = db.user.create({
+    return await db.user.create({
       username: username,
       password: password,
       email: email,
     });
-    return user;
   } catch (e) {
     console.log(e);
     return null;
   }
 }
 
-function editProfile(userId, username, password, email = null) {
+async function editProfile(userId, username, password, email = null) {
   try {
-    const user = db.user.update(
+    return await db.user.update(
       {
         username: username,
         password: password,
@@ -28,21 +27,19 @@ function editProfile(userId, username, password, email = null) {
         },
       }
     );
-    return user;
   } catch (e) {
     console.log(e);
     return null;
   }
 }
 
-function getUserByUsername(username) {
+async function getUserByUsername(username) {
   try {
-    const user = db.user.findOne({
+    return await db.user.findOne({
       where: {
         username: username,
       },
     });
-    return user;
   } catch (e) {
     console.log(e);
     return null;
@@ -63,24 +60,23 @@ function getLogsByUserId(userId) {
   }
 }
 
-function login(username, password) {
+async function login(username, password) {
   try {
-    const user = db.user.findOne({
+    return await db.user.findOne({
       where: {
         username: username,
         password: password,
       },
     });
-    return user;
   } catch (e) {
     console.log(e);
     return null;
   }
 }
 
-function getRecentAlgorithms(userId) {
+async function getRecentAlgorithms(userId) {
   try {
-    const logs = db.logs.findAll({
+    return await db.logs.findAll({
       where: {
         userId: userId,
         action: "visualization",
@@ -88,14 +84,13 @@ function getRecentAlgorithms(userId) {
       order: [["createdAt", "DESC"]],
       limit: 5,
     });
-    return logs;
   } catch (e) {
     console.log(e);
     return null;
   }
 }
 
-export default {
+module.exports = {
   register,
   editProfile,
   getUserByUsername,

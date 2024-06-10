@@ -17,7 +17,7 @@ db.sequelize.sync().then(() => {
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: "secret-key",
     resave: false,
     saveUninitialized: true,
   })
