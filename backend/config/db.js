@@ -8,10 +8,10 @@ db.sequelize = new Sequelize("algoviz", "root", "password", {
 });
 
 // Import models
-db.user = require("./models/User.js")(db.sequelize);
-db.algorithm = require("./models/Algorithm.js")(db.sequelize);
-db.category = require("./models/AlgorithmCategory.js")(db.sequelize);
-db.logs = require("./models/Logs.js")(db.sequelize);
+db.user = require("../models/User.js")(db.sequelize);
+db.algorithm = require("../models/Algorithm.js")(db.sequelize);
+db.category = require("../models/AlgorithmCategory.js")(db.sequelize);
+db.logs = require("../models/Logs.js")(db.sequelize);
 
 // Define relationships
 db.algorithm.belongsTo(db.category, { foreignKey: "categoryId" });

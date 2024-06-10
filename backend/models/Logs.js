@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const { user } = require("./User.js");
 
 module.exports = function (sequelize) {
   const logs = sequelize.define("logs", {
@@ -15,13 +16,13 @@ module.exports = function (sequelize) {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: "user",
+        model: user,
         key: "id",
       },
     },
     // input arrays, login credentials, algorithms, etc.
     input: {
-      type: Sequelize.JSON, 
+      type: Sequelize.JSON,
       allowNull: true,
     },
   });
