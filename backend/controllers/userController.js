@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const { getAlgorithmById } = require("./algorithmController");
 
 async function register(username, password, email) {
   try {
@@ -76,14 +77,21 @@ async function login(username, password) {
 
 async function getRecentAlgorithms(userId) {
   try {
-    return await db.logs.findAll({
+    let history = await db.logs.findAll({
       where: {
         userId: userId,
         action: "visualization",
       },
       order: [["createdAt", "DESC"]],
-      limit: 5,
     });
+
+    let recentAlgorithms = [];
+    for (let i = 0; i < history.length; i++) {
+      let algorithm = await getAlgorithmById(history[i].algorithmId);
+      if (recentAlgorithms.find((a) => a.id === algorithm.id)) continue;
+      recentAlgorithms.push(algorithm);
+    }
+    return recentAlgorithms;
   } catch (e) {
     console.log(e);
     return null;
