@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const { user } = require("./User.js");
+const { algorithm } = require("../config/db.js");
 
 module.exports = function (sequelize) {
   const logs = sequelize.define("logs", {
@@ -9,7 +10,7 @@ module.exports = function (sequelize) {
       autoIncrement: true,
     },
     action: {
-      type: Sequelize.JSON,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     userId: {
@@ -20,10 +21,26 @@ module.exports = function (sequelize) {
         key: "id",
       },
     },
-    // input arrays, login credentials, algorithms, etc.
+    // input arrays, login credentials, etc.
     input: {
       type: Sequelize.JSON,
       allowNull: true,
+    },
+    algorithmId: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: algorithm,
+        key: "id",
+      },
+    },
+    algorithmIdSec: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: algorithm,
+        key: "id",
+      },
     },
   });
   return logs;
