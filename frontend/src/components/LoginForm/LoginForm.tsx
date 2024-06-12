@@ -16,7 +16,13 @@ const LoginForm = () => {
       password: password,
     }).then((response) => {
       console.log(response);
-      navigate("/home");
+      if (response.status === 200) {
+        alert("Login successful");
+        localStorage.setItem("userData", JSON.stringify(response.data));
+        navigate("/home");
+      } else {
+        alert("Invalid username or password");
+      }
     });
   }
 

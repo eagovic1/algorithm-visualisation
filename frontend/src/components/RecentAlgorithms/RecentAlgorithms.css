@@ -1,0 +1,37 @@
+#recent-algorithms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.algorithm-card {
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.detail-wrap {
+  width: 100%;
+}
+
+.algorithm-name {
+  width: 100%;
+  font-size: x-large;
+  font-weight: bold;
+  margin: 0;
+}
+
+.algorithm-category {
+  margin: 0;
+  width: 100%;
+  font-size: large;
+}
+
+.fav-icon {
+  margin-top: 20px;
+}

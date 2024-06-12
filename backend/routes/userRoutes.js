@@ -49,7 +49,7 @@ router.put("/edit", async (req, res) => {
   res.status(200).json(user);
 });
 
-router.get("/logs", async (req, res) => {
+router.get("/recent", async (req, res) => {
   if (!req.session.userId)
     return res.status(400).json({ message: "Not logged in" });
   let userId = req.session.userId;

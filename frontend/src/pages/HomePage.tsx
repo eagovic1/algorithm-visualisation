@@ -1,9 +1,10 @@
 import React from 'react';
+import RecentAlgorithms from '../components/RecentAlgorithms/RecentAlgorithms';
 
 const HomePage = () => {
   return (
     <div className="home-page">
-        <h1>Home Page</h1>
+        <RecentAlgorithms />
     </div>
   );
 }

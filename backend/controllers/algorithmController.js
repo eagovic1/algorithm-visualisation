@@ -6,6 +6,12 @@ async function getAlgorithmById(id) {
       where: {
         id: id,
       },
+      include: [
+        {
+          model: db.category,
+          as: "category",
+        },
+      ],
     });
   } catch (e) {
     console.log(e);

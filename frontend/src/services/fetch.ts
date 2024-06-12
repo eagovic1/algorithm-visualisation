@@ -13,7 +13,8 @@ async function fetchData(url: string, method: string, body: any = null): Promise
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: body ? JSON.stringify(body) : null
+                body: body ? JSON.stringify(body) : null,
+                credentials: 'include',
             }
         );
 
