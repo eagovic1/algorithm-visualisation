@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const { getAlgorithmById } = require("./algorithmController");
 
 async function register(username, password, email) {
   try {
@@ -81,18 +82,12 @@ async function getRecentAlgorithms(userId) {
         userId: userId,
         action: "visualization",
       },
-      include: [
-        {
-          model: db.algorithm,
-          as: "algorithmPrimary",
-        },
-      ],
       order: [["createdAt", "DESC"]],
     });
 
     let recentAlgorithms = [];
     for (let i = 0; i < history.length; i++) {
-      let algorithm = history[i].algorithm;
+      let algorithm = await getAlgorithmById(history[i].algorithmId);
       if (recentAlgorithms.find((a) => a.id === algorithm.id)) continue;
       recentAlgorithms.push(algorithm);
     }
@@ -109,16 +104,11 @@ async function getFavoriteAlgorithms(userId) {
       where: {
         userId: userId,
       },
-      include: [
-        {
-          model: db.algorithm,
-        },
-      ],
     });
 
     let favoriteAlgorithms = [];
     for (let i = 0; i < favorites.length; i++) {
-      let algorithm = favorites[i].algorithm;
+      let algorithm = await getAlgorithmById(favorites[i].algorithmId);
       if (favoriteAlgorithms.find((a) => a.id === algorithm.id)) continue;
       favoriteAlgorithms.push(algorithm);
     }
