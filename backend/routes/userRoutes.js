@@ -59,4 +59,38 @@ router.get("/recent", async (req, res) => {
   res.status(200).json(logs);
 });
 
+router.get("/favorites", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let userId = req.session.userId;
+  let logs = await userController.getFavoriteAlgorithms(userId);
+  if (!logs) return res.status(400).json({ message: "No favorites found" });
+
+  res.status(200).json(logs);
+});
+
+router.post("/favorite/:algorithmId", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let userId = req.session.userId;
+  let algorithmId = req.params.algorithmId;
+  let favorite = await userController.addFavoriteAlgorithm(userId, algorithmId);
+  if (!favorite)
+    return res.status(400).json({ message: "Algorithm already favorited" });
+
+  res.status(200).json(favorite);
+});
+
+router.delete("/favorite/:algorithmId", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let userId = req.session.userId;
+  let algorithmId = req.params.algorithmId;
+  let favorite = await userController.removeFavoriteAlgorithm(userId, algorithmId);
+  if (!favorite)
+    return res.status(400).json({ message: "Algorithm not favorited" });
+
+  res.status(200).json(favorite);
+});
+
 module.exports = router;
