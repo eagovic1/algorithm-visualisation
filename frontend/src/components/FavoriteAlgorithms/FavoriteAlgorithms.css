@@ -1,20 +1,11 @@
-#recent-algorithms {
+#favorite-algorithms {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border-bottom: 1px solid gray;
   padding: 20px;
-  margin-bottom: 50px;
-}
-
-.section-title {
-  box-sizing: border-box;
-  text-align: start;
-  font-size: 20pt;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
 .algorithm-card {
@@ -22,11 +13,15 @@
   margin: 10px;
   padding: 10px;
   width: 300px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #bebebe;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   cursor: pointer;
+}
+
+.algorithm-card:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .detail-wrap {

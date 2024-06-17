@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { fetchData } from "../../services/fetch";
-import "./RecentAlgorithms.css";
+import "./FavoriteAlgorithms.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
-const RecentAlgorithms = () => {
+const FavoriteAlgorithms = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
-  const [recentAlgorithms, setRecentAlgorithms] = useState([]);
+  const [favoriteAlgorithms, setFavoriteAlgorithms] = useState([]);
 
   useEffect(() => {
     console.log(localStorage.getItem("userData"));
-    fetchData("http://localhost:3000/api/user/recent", "GET").then(
+    fetchData("http://localhost:3000/api/user/favorites", "GET").then(
       (response) => {
         console.log(response);
-        setRecentAlgorithms(response.data);
+        setFavoriteAlgorithms(response.data);
         setDataLoaded(true);
       }
     );
@@ -22,9 +22,9 @@ const RecentAlgorithms = () => {
   if (!dataLoaded) return <h1>Loading...</h1>;
   return (
     <>
-      <div className="section-title">Recent Algorithms</div>
-      <div id="recent-algorithms">
-        {recentAlgorithms.map((algorithm) => {
+      <div className="section-title">Favorite Algorithms</div>
+      <div id="favorite-algorithms">
+        {favoriteAlgorithms.map((algorithm) => {
           return (
             <>
               <div className="algorithm-card">
@@ -44,4 +44,4 @@ const RecentAlgorithms = () => {
   );
 };
 
-export default RecentAlgorithms;
+export default FavoriteAlgorithms;

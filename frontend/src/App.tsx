@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import SortingArray from "./components/SortingArray/SortingArray";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import ArrayInputPage from "./pages/ArrayInputPage";
 import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";

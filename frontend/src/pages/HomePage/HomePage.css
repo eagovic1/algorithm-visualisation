@@ -1,0 +1,46 @@
+#home-page-wrap {
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-card {
+  box-sizing: border-box;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  font-size: 20pt;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 5);
+
+  background-color: #333333;
+  cursor: pointer;
+  border: 1px solid #bebebe;
+  transition: all 0.3s;
+  background: rgb(255, 255, 255);
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+#visualize-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(51, 51, 51, 1) 125%
+  );
+}
+
+#compare-card {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(51, 51, 51, 1) 125%
+  );
+}
