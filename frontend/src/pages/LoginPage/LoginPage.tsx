@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { fetchData } from "../../services/fetch";
 import { useNavigate } from "react-router-dom";
-import "./LoginForm.css";
+import "./LoginPage.css";
 
-const LoginForm = () => {
+const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -58,4 +58,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginPage;

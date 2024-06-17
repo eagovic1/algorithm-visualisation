@@ -2,13 +2,12 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import SortingArray from "./components/SortingArray/SortingArray";
 import HomePage from "./pages/HomePage/HomePage";
-import ArrayInputPage from "./pages/ArrayInputPage";
 import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import NotAuthorized from "./pages/NotAuthorizedPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import NotAuthorized from "./pages/NotAuthorizedPage/NotAuthorizedPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 enum InstructionType {
   TAG = "tag",

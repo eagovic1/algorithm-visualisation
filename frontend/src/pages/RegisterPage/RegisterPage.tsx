@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { fetchData } from "../../services/fetch";
 import { useNavigate } from "react-router-dom";
-import "./RegisterForm.css";
+import "./RegisterPage.css";
 
-const RegisterForm = () => {
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
+
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     console.log("Register clicked");
@@ -60,6 +60,6 @@ const RegisterForm = () => {
       </p>
     </div>
   );
-};
+}
 
-export default RegisterForm;
+export default RegisterPage
