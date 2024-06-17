@@ -25,6 +25,14 @@ module.exports = function (sequelize) {
       type: Sequelize.TEXT,
       allowNull: true,
     },
+    complexity: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+    key: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
   });
   return algorithm;
 };
