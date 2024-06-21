@@ -3,10 +3,12 @@ import { fetchData } from "../../services/fetch";
 import "./FavoriteAlgorithms.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const FavoriteAlgorithms = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [favoriteAlgorithms, setFavoriteAlgorithms] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(localStorage.getItem("userData"));
@@ -19,6 +21,11 @@ const FavoriteAlgorithms = () => {
     );
   }, []);
 
+  function handleClick(algorithmKey: string) {
+    const category = "sorting";
+    navigate(`/input/${category}/${algorithmKey}`);
+  }
+
   if (!dataLoaded) return <h1>Loading...</h1>;
   return (
     <>
@@ -27,7 +34,10 @@ const FavoriteAlgorithms = () => {
         {favoriteAlgorithms.map((algorithm) => {
           return (
             <>
-              <div className="algorithm-card">
+              <div
+                className="algorithm-card"
+                onClick={() => handleClick(algorithm["key"])}
+              >
                 <div className="detail-wrap">
                   <p className="algorithm-name">{algorithm["name"]}</p>
                   <p className="algorithm-category">
