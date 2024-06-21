@@ -2,22 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../../services/fetch.ts";
 import "./ArrayInput.css";
 
-const ArrayInput = () => {
+type ArrayInputProps = {
+  handleClick: (array: number[]) => void;
+};
+
+const ArrayInput = (props: ArrayInputProps) => {
   const [array, setArray] = useState([5, 2, 4, 3, 1]);
   const [arraySize, setArraySize] = useState(5);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  const handleClickSort = () => {
-    const sort = "bubble";
-    fetchData(`http://localhost:3000/api/sort/${sort}/steps`, "POST", {
-      array: array,
-    })
-      .then((response) => {
-        console.log("Success:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  const handleClick = () => {
+    props.handleClick(array);
   };
 
   const onChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +92,7 @@ const ArrayInput = () => {
         />
       </div>
       <div></div>
-      <button onClick={handleClickSort}>Sort</button>
+      <button onClick={handleClick}>Sort</button>
     </>
   );
 };
