@@ -31,7 +31,4 @@ db.user.hasMany(db.favorite, { foreignKey: "userId" });
 db.favorite.belongsTo(db.algorithm, { foreignKey: "algorithmId" });
 db.algorithm.hasMany(db.favorite, { foreignKey: "algorithmId" });
 
-// Sync the database
-db.sequelize.sync();
-
 module.exports = db;
