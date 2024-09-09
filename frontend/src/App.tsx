@@ -8,20 +8,8 @@ import NotAuthorized from "./pages/NotAuthorizedPage/NotAuthorizedPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SortingInputPage from "./pages/SortingInputPage/SortingInputPage";
 import SortingVisualisationPage from "./pages/SortingVisualisationPage/SortingVisualisationPage";
-
-enum InstructionType {
-  TAG = "tag",
-  SWAP = "swap",
-  COMPARE = "compare",
-  ASSIGN = "assign",
-}
-
-interface Instruction {
-  type: InstructionType;
-  clear: boolean;
-  operands: number[];
-  description: string;
-}
+import ComparisonHomePage from "./pages/ComparisonHomePage/ComparisonHomePage";
+import ComparisonResultPage from "./pages/ComparisonResultPage/ComparisonResultPage";
 
 function App() {
   return (
@@ -34,7 +22,8 @@ function App() {
         <Route path="/input/sorting/:algorithmKey" element={<SortingInputPage />} />
         <Route path="/visualisation" element={<HomePage />} /> {}
         <Route path="/visualisation/sorting/:algorithmKey" element={<SortingVisualisationPage />} /> {}
-        <Route path="/comparison" element={<HomePage />} /> {}
+        <Route path="/comparison" element={<ComparisonHomePage />} /> {}
+        <Route path="/comparison/result/:algorithmKey/:algorithmKeySec" element={<ComparisonResultPage />} /> {}
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
