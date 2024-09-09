@@ -1,0 +1,15 @@
+#comparison-results-root #title{
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+#comparison-results table{
+    margin-top: 25px;
+    border: 1px solid #ccc;
+}
+
+#comparison-results th,
+td {
+  border: 1px solid #ccc;
+  padding: 5px 20px;
+}
