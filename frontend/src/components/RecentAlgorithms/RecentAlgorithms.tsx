@@ -22,11 +22,12 @@ const RecentAlgorithms = () => {
   }, []);
 
   function handleClick(algorithmKey: string) {
-    const category = "sorting"
+    const category = "sorting";
     navigate(`/input/${category}/${algorithmKey}`);
   }
 
   if (!dataLoaded) return <h1>Loading...</h1>;
+  if (recentAlgorithms.length === 0) return <></>;
   return (
     <>
       <div className="section-title">Recent Algorithms</div>

@@ -92,7 +92,7 @@ const ArrayInput = (props: ArrayInputProps) => {
         />
       </div>
       <div></div>
-      <button onClick={handleClick}>Sort</button>
+      <button onClick={handleClick}>Submit</button>
     </>
   );
 };

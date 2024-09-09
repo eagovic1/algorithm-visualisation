@@ -48,25 +48,24 @@ const StepControl = (props: StepControlProps) => {
     setPlaying(true);
   };
 
-  const restart = () => (
-    props.setCurrentStep(1)
-  )
-
+  const restart = () => props.setCurrentStep(1);
 
   return (
     <div className="stepControl">
-      <button onClick={play}>
-        <img className="controlIcon" src={Play} alt="Play" />
-      </button>
-      <button onClick={pause}>
-        <img className="controlIcon" src={Pause} alt="Pause" />
-      </button>
-      <button onClick={nextStep}>
-        <img className="controlIcon" src={RightArrow} alt="Next" />
-      </button>
-      <button onClick={restart}>
-        <img className="controlIcon" src={Restart} alt="Restart" />
-      </button>
+      <img onClick={play} className="controlIcon" src={Play} alt="Play" />
+      <img onClick={pause} className="controlIcon" src={Pause} alt="Pause" />
+      <img
+        onClick={nextStep}
+        className="controlIcon"
+        src={RightArrow}
+        alt="Next"
+      />
+      <img
+        onClick={restart}
+        className="controlIcon"
+        src={Restart}
+        alt="Restart"
+      />
     </div>
   );
 };

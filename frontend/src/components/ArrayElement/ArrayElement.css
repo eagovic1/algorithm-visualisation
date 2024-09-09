@@ -7,7 +7,7 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid #646464;
     padding: 5px 10px;
     font-size: 20pt;
     text-shadow: 1px 1px 3px #000000;
@@ -21,5 +21,6 @@
 }
 
 .taggedElement{
-    border: 3px solid #00363f;
+    text-shadow: 1px 5px 1px #000000;
+    background-color: #0bacdd;
 }

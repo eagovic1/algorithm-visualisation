@@ -1,4 +1,19 @@
-.controlIcon{
-    width: 75px;
-    height: 75px;
+.stepControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controlIcon {
+  width: 75px;
+  height: 75px;
+  margin: 0 20px;
+}
+
+.controlIcon:hover {
+  cursor: pointer;
+}
+
+.controlIcon:active {
+  transform: scale(0.9);
 }

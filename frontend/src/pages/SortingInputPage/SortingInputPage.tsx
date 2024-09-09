@@ -2,6 +2,7 @@ import React from "react";
 import ArrayInput from "../../components/ArrayInput/ArrayInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchData } from "../../services/fetch";
+import "./SortingInputPage.css";
 
 const SortingInputPage = () => {
   const navigate = useNavigate();
@@ -19,7 +20,15 @@ const SortingInputPage = () => {
 
   return (
     <>
-      <ArrayInput handleClick={sortArray} />
+      <div id="sorting-input-root">
+        <div id="title">
+          <p>
+            Enter an array of numbers to sort using the <b> {algorithmKey}</b>{" "}
+            algorithm
+          </p>
+        </div>
+        <ArrayInput handleClick={sortArray} />
+      </div>
     </>
   );
 };
