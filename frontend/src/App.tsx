@@ -10,6 +10,7 @@ import SortingInputPage from "./pages/SortingInputPage/SortingInputPage";
 import SortingVisualisationPage from "./pages/SortingVisualisationPage/SortingVisualisationPage";
 import ComparisonHomePage from "./pages/ComparisonHomePage/ComparisonHomePage";
 import ComparisonResultPage from "./pages/ComparisonResultPage/ComparisonResultPage";
+import VisualisationHomePage from "./pages/VisualisationHomePage/VisualisationHomePage";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/input/sorting/:algorithmKey" element={<SortingInputPage />} />
-        <Route path="/visualisation" element={<HomePage />} /> {}
+        <Route path="/visualisation" element={<VisualisationHomePage />} /> {}
         <Route path="/visualisation/sorting/:algorithmKey" element={<SortingVisualisationPage />} /> {}
         <Route path="/comparison" element={<ComparisonHomePage />} /> {}
         <Route path="/comparison/result/:algorithmKey/:algorithmKeySec" element={<ComparisonResultPage />} /> {}
