@@ -9,9 +9,9 @@ import Snackbar from "../../components/Snackbar/Snackbar"; // Import Snackbar co
 
 const VisualisationHomePage = () => {
   const [algorithmsLoaded, setAlgorithmsLoaded] = useState(false);
+  const [algorithms, setAlgorithms] = useState([]);
   const [favoriteAlgorithmsLoaded, setFavoriteAlgorithmsLoaded] =
     useState(false);
-  const [algorithms, setAlgorithms] = useState([]);
   const [favoriteAlgorithms, setFavoriteAlgorithms] = useState([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -58,58 +58,60 @@ const VisualisationHomePage = () => {
 
   return (
     <>
-      <div className="section-title">Sorting Algorithms</div>
-      <div id="sorting-algorithms">
-        {algorithms.map((algorithm) => (
-          <div
-            key={algorithm["id"]}
-            className="algorithm-card"
-            onClick={() => handleClick(algorithm["key"])}
-          >
-            <div className="detail-wrap">
-              <p className="algorithm-name">{algorithm["name"]}</p>
-              <p className="algorithm-category">
-                {algorithm["category"]["name"]}
-              </p>
+      <div id="visualisation-home-page">
+        <div className="section-title">Sorting Algorithms</div>
+        <div id="sorting-algorithms">
+          {algorithms.map((algorithm) => (
+            <div
+              key={algorithm["id"]}
+              className="algorithm-card"
+              onClick={() => handleClick(algorithm["key"])}
+            >
+              <div className="detail-wrap">
+                <p className="algorithm-name">{algorithm["name"]}</p>
+                <p className="algorithm-category">
+                  {algorithm["category"]["name"]}
+                </p>
+              </div>
+              <FontAwesomeIcon
+                className="fav-icon"
+                onClick={(event) => {
+                  event.stopPropagation(); // Prevent triggering the card click
+                  if (isFavorite(algorithm["id"])) {
+                    fetchData(
+                      `http://localhost:3000/api/user/favorite/${algorithm["id"]}`,
+                      "DELETE"
+                    ).then(() => {
+                      setFavoriteAlgorithms(
+                        favoriteAlgorithms.filter(
+                          (element) => element["id"] !== algorithm["id"]
+                        )
+                      );
+                      showSnackbar("Removed from favorites");
+                    });
+                  } else {
+                    fetchData(
+                      `http://localhost:3000/api/user/favorite/${algorithm["id"]}`,
+                      "POST"
+                    ).then(() => {
+                      setFavoriteAlgorithms([...favoriteAlgorithms, algorithm]);
+                      showSnackbar("Added to favorites");
+                    });
+                  }
+                }}
+                icon={isFavorite(algorithm["id"]) ? StarFilled : StarEmpty}
+              />
             </div>
-            <FontAwesomeIcon
-              className="fav-icon"
-              onClick={(event) => {
-                event.stopPropagation(); // Prevent triggering the card click
-                if (isFavorite(algorithm["id"])) {
-                  fetchData(
-                    `http://localhost:3000/api/user/favorite/${algorithm["id"]}`,
-                    "DELETE"
-                  ).then(() => {
-                    setFavoriteAlgorithms(
-                      favoriteAlgorithms.filter(
-                        (element) => element["id"] !== algorithm["id"]
-                      )
-                    );
-                    showSnackbar("Removed from favorites");
-                  });
-                } else {
-                  fetchData(
-                    `http://localhost:3000/api/user/favorite/${algorithm["id"]}`,
-                    "POST"
-                  ).then(() => {
-                    setFavoriteAlgorithms([...favoriteAlgorithms, algorithm]);
-                    showSnackbar("Added to favorites");
-                  });
-                }
-              }}
-              icon={isFavorite(algorithm["id"]) ? StarFilled : StarEmpty}
-            />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Render the Snackbar component outside of the map loop */}
-      <Snackbar
-        message={snackbarMessage}
-        open={snackbarOpen}
-        onClose={() => setSnackbarOpen(false)}
-      />
+        {/* Render the Snackbar component outside of the map loop */}
+        <Snackbar
+          message={snackbarMessage}
+          open={snackbarOpen}
+          onClose={() => setSnackbarOpen(false)}
+        />
+      </div>
     </>
   );
 };

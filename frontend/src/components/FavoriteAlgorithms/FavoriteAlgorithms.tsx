@@ -27,28 +27,31 @@ const FavoriteAlgorithms = () => {
   }
 
   if (!dataLoaded) return <h1>Loading...</h1>;
+  if (favoriteAlgorithms.length === 0) return <></>;
   return (
     <>
-      <div className="section-title">Favorite Algorithms</div>
-      <div id="favorite-algorithms">
-        {favoriteAlgorithms.map((algorithm) => {
-          return (
-            <>
-              <div
-                className="algorithm-card"
-                onClick={() => handleClick(algorithm["key"])}
-              >
-                <div className="detail-wrap">
-                  <p className="algorithm-name">{algorithm["name"]}</p>
-                  <p className="algorithm-category">
-                    {algorithm["category"]["name"]}
-                  </p>
+      <div id="favorite-algorithms-root">
+        <div className="section-title">Favorite Algorithms</div>
+        <div id="favorite-algorithms">
+          {favoriteAlgorithms.map((algorithm) => {
+            return (
+              <>
+                <div
+                  className="algorithm-card"
+                  onClick={() => handleClick(algorithm["key"])}
+                >
+                  <div className="detail-wrap">
+                    <p className="algorithm-name">{algorithm["name"]}</p>
+                    <p className="algorithm-category">
+                      {algorithm["category"]["name"]}
+                    </p>
+                  </div>
+                  <FontAwesomeIcon className="fav-icon" icon={faStar} />
                 </div>
-                <FontAwesomeIcon className="fav-icon" icon={faStar} />
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );

@@ -1,62 +1,62 @@
 .login-form-container {
-    font-family: sans-serif;
-    background-color: #333333;
-    color: white;
-    padding: 20px;
-    box-shadow: inset 1px 1px 5px black;
-    border-radius: 5px;
-  }
-  
-  h1 {
-    text-shadow: white 1px 1px 2px;
-  }
-  
-  .login-form {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 25px;
-    width: 500px;
-  }
-  
-  input {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 10px;
-    width: 250px;
-    font-size: large;
-  }
-  
-  input::placeholder {
-    text-shadow: black 0px 0px 1px;
-  }
-  
-  button {
-    color: #333333;
-    margin-top: 25px;
-    padding: 10px !important;
-    box-sizing: border-box;
-    width: 250px;
-    font-size: x-large !important;
-    letter-spacing: 2px;
-    font-weight: bold !important;
-  }
-  
-  button:hover {
-    background-color: #dddddd;
-    letter-spacing: 3px;
-  }
-  
-  .register {
-    text-decoration: none;
-    color: white;
-    text-shadow: white 1px 1px 1px;
-    font-weight: 900;
-  }
-  
-  .register:hover {
-    color: #dddddd;
-  }
-  
+  font-family: sans-serif;
+  background-color: #333333;
+  color: white;
+  padding: 50px 0;
+  box-shadow: inset 1px 1px 5px black;
+  border-radius: 5px;
+}
+
+.login-form-container h1 {
+  text-shadow: white 1px 1px 2px;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 25px;
+  width: 500px;
+}
+
+.login-form-container input {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  width: 250px;
+  font-size: large;
+}
+
+.login-form-container input::placeholder {
+  text-shadow: black 0px 0px 1px;
+}
+
+.login-form-container button {
+  color: #333333;
+  margin-top: 25px;
+  padding: 10px !important;
+  box-sizing: border-box;
+  width: 250px;
+  font-size: x-large !important;
+  letter-spacing: 2px;
+  font-weight: bold !important;
+}
+
+.login-form-container button:hover {
+  background-color: #dddddd;
+  letter-spacing: 3px;
+}
+
+.register {
+  text-decoration: none;
+  color: white;
+  text-shadow: white 1px 1px 1px;
+  font-weight: 900;
+}
+
+.register:hover {
+  color: #dddddd;
+}

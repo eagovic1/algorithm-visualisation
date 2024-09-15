@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../../services/fetch.ts";
 import "./ArrayInput.css";
+import { Button } from "react-bootstrap";
 
 type ArrayInputProps = {
   handleClick: (array: number[]) => void;
@@ -91,8 +92,9 @@ const ArrayInput = (props: ArrayInputProps) => {
           onChange={handleChangeArraySize}
         />
       </div>
-      <div></div>
-      <button onClick={handleClick}>Submit</button>
+      <Button id="submit-button" onClick={handleClick}>
+        Submit
+      </Button>
     </>
   );
 };

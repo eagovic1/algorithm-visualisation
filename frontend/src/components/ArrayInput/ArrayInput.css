@@ -8,8 +8,7 @@
 
 #arraySizeInput {
   width: 50px;
-  height: 40px;
-  font-size: 30pt;
+  font-size: 25pt;
   text-align: end;
   margin-left: 25px;
   border: solid 3px #00363f;
@@ -18,9 +17,20 @@
 
 .arrayElementInput {
   width: 75px;
-  height: 50px;
   display: flex;
   text-align: center;
-  font-size: 35pt;
+  font-size: 25pt;
   border: solid 1px #00363f;
+}
+
+#submit-button {
+  font-weight: bold;
+  margin-top: 25px;
+  font-size: x-large;
+  background-color: #333333;
+  padding: 5px 25px;
+}
+
+#submit-button:hover {
+  background-color: #555555;
 }

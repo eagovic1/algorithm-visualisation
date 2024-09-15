@@ -4,19 +4,21 @@
   gap: 50px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
 }
 
 .feature-card {
   color: white;
   box-sizing: border-box;
-  width: 250px;
-  height: 100px;
+  width: 350px;
+  height: 200px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 20px 0;
 
-  font-weight: bold;
   font-size: 20pt;
+  letter-spacing: 5px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 
   background-color: #333333;
@@ -31,17 +33,24 @@
 }
 
 #visualize-card {
+  align-items: end;
   background: linear-gradient(
-    -225deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("https://i.ytimg.com/vi/BeoCbJPuvSE/maxresdefault.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #compare-card {
   background: linear-gradient(
-    -225deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("https://my.eng.utah.edu/~lakhani/Assignment5/InsertionSort.jpg");
+  background-size: cover;
+  background-position: center;
 }

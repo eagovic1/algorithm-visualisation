@@ -1,3 +1,9 @@
+#visualisation-home-page {
+  box-sizing: content-box;
+  padding: 0 25px;
+  max-width: 1000px;
+}
+
 #sorting-algorithms {
   box-sizing: border-box;
   display: flex;
