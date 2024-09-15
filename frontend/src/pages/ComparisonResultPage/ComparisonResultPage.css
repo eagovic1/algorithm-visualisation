@@ -1,15 +1,59 @@
-#comparison-results-root #title{
-    font-size: 28px;
-    letter-spacing: 3px;
+#root {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-#comparison-results table{
-    margin-top: 25px;
-    border: 1px solid #ccc;
+#comparison-results-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#comparison-results-root #title {
+  margin-top: 100px;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+#comparison-results {
+  max-width: 600px;
+}
+
+#comparison-results table {
+  margin-top: 25px;
 }
 
 #comparison-results th,
 td {
-  border: 1px solid #ccc;
+  border: 1px solid black;
   padding: 5px 20px;
+}
+
+#comparison-charts {
+  gap: 50px;
+  max-width: 1250px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.comparison-chart {
+  box-sizing: content-box;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.comparison-chart .chart-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }

@@ -1,4 +1,12 @@
 import { useLocation } from "react-router-dom";
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  VerticalGridLines,
+  HorizontalGridLines,
+  HorizontalBarSeries,
+} from "react-vis";
 import "./ComparisonResultPage.css";
 
 const ComparisonResultPage = () => {
@@ -8,6 +16,64 @@ const ComparisonResultPage = () => {
 
   const algorithmFirst = comparison.algorithmFirst;
   const algorithmSecond = comparison.algorithmSecond;
+
+  const timeTakenChartData = [
+    { y: algorithmFirst.name, x: algorithmFirst.timeTaken, color: "#1f77b4" },
+    { y: algorithmSecond.name, x: algorithmSecond.timeTaken, color: "#ff7f0e" },
+  ];
+
+  const memoryUsedChartData = [
+    { y: algorithmFirst.name, x: algorithmFirst.memoryUsed, color: "#1f77b4" },
+    {
+      y: algorithmSecond.name,
+      x: algorithmSecond.memoryUsed,
+      color: "#ff7f0e",
+    },
+  ];
+
+  const comparisonsChartData = [
+    {
+      y: algorithmFirst.name,
+      x: algorithmFirst.comparisons,
+      color: "#1f77b4",
+    },
+    {
+      y: algorithmSecond.name,
+      x: algorithmSecond.comparisons,
+      color: "#ff7f0e",
+    },
+  ];
+
+  const swapsChartData = [
+    { y: algorithmFirst.name, x: algorithmFirst.swaps, color: "#1f77b4" },
+    { y: algorithmSecond.name, x: algorithmSecond.swaps, color: "#ff7f0e" },
+  ];
+
+  const writeOperationsChartData = [
+    {
+      y: algorithmFirst.name,
+      x: algorithmFirst.writeOperations,
+      color: "#1f77b4",
+    },
+    {
+      y: algorithmSecond.name,
+      x: algorithmSecond.writeOperations,
+      color: "#ff7f0e",
+    },
+  ];
+
+  const readOperationsChartData = [
+    {
+      y: algorithmFirst.name,
+      x: algorithmFirst.readOperations,
+      color: "#1f77b4",
+    },
+    {
+      y: algorithmSecond.name,
+      x: algorithmSecond.readOperations,
+      color: "#ff7f0e",
+    },
+  ];
 
   return (
     <div id="comparison-results-root">
@@ -22,7 +88,7 @@ const ComparisonResultPage = () => {
       </div>
 
       <div id="comparison-results">
-        <table>
+        <table className="table table-striped">
           <thead>
             <tr>
               <th></th>
@@ -62,17 +128,140 @@ const ComparisonResultPage = () => {
               <td>{algorithmSecond.readOperations}</td>
             </tr>
             <tr>
-              <td>Memory Used</td>
+              <td>Memory Used (in bytes)</td>
               <td>{algorithmFirst.memoryUsed}</td>
               <td>{algorithmSecond.memoryUsed}</td>
             </tr>
             <tr>
-              <td>Time Taken</td>
+              <td>Time Taken (in miliseconds)</td>
               <td>{algorithmFirst.timeTaken}</td>
               <td>{algorithmSecond.timeTaken}</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div id="comparison-charts">
+        <div className="comparison-chart">
+          <div className="chart-title">Time Taken (in miliseconds)</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={timeTakenChartData}
+            />
+          </XYPlot>
+        </div>
+        <div className="comparison-chart">
+          <div className="chart-title">Memory Used (in bytes)</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={memoryUsedChartData}
+            />
+          </XYPlot>
+        </div>
+        <div className="comparison-chart">
+          <div className="chart-title">Comparisons</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={comparisonsChartData}
+            />
+          </XYPlot>
+        </div>
+        <div className="comparison-chart">
+          <div className="chart-title">Swaps</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={swapsChartData}
+            />
+          </XYPlot>
+        </div>
+        <div className="comparison-chart">
+          <div className="chart-title">Write Operations</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={writeOperationsChartData}
+            />
+          </XYPlot>
+        </div>
+        <div className="comparison-chart">
+          <div className="chart-title">Read Operations</div>
+          <XYPlot
+            width={300}
+            height={150}
+            stackBy="x"
+            yType="ordinal"
+            margin={{ left: 120, right: 10, bottom: 50 }} // Adjusted margins
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis tickLabelAngle={-45} />
+            <YAxis />
+            <HorizontalBarSeries
+              barWidth={0.5}
+              colorType="literal"
+              data={readOperationsChartData}
+            />
+          </XYPlot>
+        </div>
       </div>
     </div>
   );
