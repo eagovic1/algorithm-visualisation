@@ -86,11 +86,60 @@ router.delete("/favorite/:algorithmId", async (req, res) => {
     return res.status(400).json({ message: "Not logged in" });
   let userId = req.session.userId;
   let algorithmId = req.params.algorithmId;
-  let favorite = await userController.removeFavoriteAlgorithm(userId, algorithmId);
+  let favorite = await userController.removeFavoriteAlgorithm(
+    userId,
+    algorithmId
+  );
   if (!favorite)
     return res.status(400).json({ message: "Algorithm not favorited" });
 
   res.status(200).json(favorite);
+});
+
+router.get("/all", async (req, res) => {
+  let users = await userController.getAllUsers();
+  if (!users) return res.status(400).json({ message: "No users found" });
+
+  res.status(200).json(users);
+});
+
+router.get("/:userId", async (req, res) => {
+  let userId = req.params.userId;
+  let user = await userController.getUserById(userId);
+  if (!user) return res.status(400).json({ message: "User not found" });
+
+  res.status(200).json(user);
+});
+
+router.delete("/:userId", async (req, res) => {
+  let userId = req.params.userId;
+  let user = await userController.deleteUser(userId);
+  if (!user) return res.status(400).json({ message: "User not found" });
+
+  res.status(200).json(user);
+});
+
+router.post("/create", async (req, res) => {
+  let { username, password, email } = req.body;
+  let user = await userController.register(username, password, email);
+  if (!user)
+    return res.status(400).json({ message: "Username already exists" });
+
+  res.status(200).json(user);
+});
+
+router.put("/update/:userId", async (req, res) => {
+  let { username, password, email } = req.body;
+  let user = await userController.editProfile(
+    req.params.userId,
+    username,
+    password,
+    email
+  );
+  if (!user)
+    return res.status(400).json({ message: "Username already exists" });
+
+  res.status(200).json(user);
 });
 
 module.exports = router;

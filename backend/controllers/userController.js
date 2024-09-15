@@ -1,6 +1,41 @@
 const db = require("../config/db");
 const { getAlgorithmById } = require("./algorithmController");
 
+async function getAllUsers() {
+  try {
+    return await db.user.findAll();
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+async function getUserById(userId) {
+  try {
+    return await db.user.findOne({
+      where: {
+        id: userId,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+async function deleteUser(userId) {
+  try {
+    return await db.user.destroy({
+      where: {
+        id: userId,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
 async function register(username, password, email) {
   try {
     return await db.user.create({
@@ -14,20 +49,23 @@ async function register(username, password, email) {
   }
 }
 
-async function editProfile(userId, username, password, email = null) {
+async function editProfile(
+  userId,
+  username = null,
+  password = null,
+  email = null
+) {
   try {
-    return await db.user.update(
-      {
-        username: username,
-        password: password,
-        email: email,
+    const updateData = {};
+    if (username !== null) updateData.username = username;
+    if (password !== null) updateData.password = password;
+    if (email !== null) updateData.email = email;
+
+    return await db.user.update(updateData, {
+      where: {
+        id: userId,
       },
-      {
-        where: {
-          id: userId,
-        },
-      }
-    );
+    });
   } catch (e) {
     console.log(e);
     return null;
@@ -155,4 +193,7 @@ module.exports = {
   getFavoriteAlgorithms,
   addFavoriteAlgorithm,
   removeFavoriteAlgorithm,
+  getAllUsers,
+  getUserById,
+  deleteUser,
 };
