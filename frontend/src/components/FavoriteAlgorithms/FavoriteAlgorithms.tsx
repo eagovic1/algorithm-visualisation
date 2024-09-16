@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "../../services/fetch";
 import "./FavoriteAlgorithms.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const FavoriteAlgorithms = () => {

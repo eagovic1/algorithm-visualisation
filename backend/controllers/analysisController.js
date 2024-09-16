@@ -15,10 +15,13 @@ function compareAlgorithms(algorithmKey, algorithmKeySec, array) {
   let algorithm = algorithms[algorithmKey];
   let algorithmSec = algorithms[algorithmKeySec];
 
+  const arrayCopy1 = JSON.parse(JSON.stringify(array));
+  const arrayCopy2 = JSON.parse(JSON.stringify(array));
+
   return {
     input: array,
-    algorithmFirst: algorithm(array),
-    algorithmSecond: algorithmSec(array),
+    algorithmFirst: algorithm(arrayCopy1),
+    algorithmSecond: algorithmSec(arrayCopy2),
   };
 }
 

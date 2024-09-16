@@ -30,26 +30,30 @@ const RecentAlgorithms = () => {
   if (recentAlgorithms.length === 0) return <></>;
   return (
     <>
-      <div className="section-title">Recent Algorithms</div>
-      <div id="recent-algorithms">
-        {recentAlgorithms.map((algorithm) => {
-          return (
-            <>
-              <div
-                className="algorithm-card"
-                onClick={() => handleClick(algorithm["key"])}
-              >
-                <div className="detail-wrap">
-                  <p className="algorithm-name">{algorithm["name"]}</p>
-                  <p className="algorithm-category">
-                    {algorithm["category"]["name"]}
-                  </p>
+      <div id="recent-algorithms-root">
+        <div className="section-title">Recent Algorithms</div>
+        <div id="recent-algorithms">
+          {recentAlgorithms.map((algorithm) => {
+            return (
+              <>
+                <div
+                  className="algorithm-card"
+                  onClick={() => handleClick(algorithm["key"])}
+                >
+                  <div className="detail-wrap">
+                    <p className="algorithm-name">{algorithm["name"]}</p>
+                    <p className="algorithm-category">
+                      {algorithm["category"]["name"]}
+                    </p>
+                  </div>
+                  {false && (
+                    <FontAwesomeIcon className="fav-icon" icon={faStar} />
+                  )}
                 </div>
-                <FontAwesomeIcon className="fav-icon" icon={faStar} />
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );
