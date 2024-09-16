@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const algorithmController = require("../controllers/algorithmController");
+const algorithmCategoryController = require("../controllers/algorithmCategoryController");
 
 router.get("/all", async (req, res) => {
   if (!req.session.userId)
@@ -48,12 +49,12 @@ router.post("/", async (req, res) => {
   res.status(200).json(algorithm);
 });
 
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   if (!req.session.userId)
     return res.status(400).json({ message: "Not logged in" });
-  let { id, name, code, complexity, key, categoryId } = req.body;
+  let { name, code, complexity, key, categoryId } = req.body;
   let algorithm = await algorithmController.editAlgorithm(
-    id,
+    req.params.id,
     name,
     code,
     complexity,
@@ -63,6 +64,67 @@ router.put("/", async (req, res) => {
   if (!algorithm)
     return res.status(400).json({ message: "Algorithm not found" });
   res.status(200).json(algorithm);
+});
+
+router.delete("/:id", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let algorithm = await algorithmController.deleteAlgorithm(req.params.id);
+  if (!algorithm)
+    return res.status(400).json({ message: "Algorithm not found" });
+  res.status(200).json(algorithm);
+});
+
+router.get("/categories/all", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let categories =
+    await algorithmCategoryController.getAllAlgorithmCategories();
+  if (!categories)
+    return res.status(400).json({ message: "No categories found" });
+  res.status(200).json(categories);
+});
+
+router.get("/categories/:id", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let category = await algorithmCategoryController.getAlgorithmCategoryById(
+    req.params.id
+  );
+  if (!category) return res.status(400).json({ message: "Category not found" });
+  res.status(200).json(category);
+});
+
+router.post("/categories", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let { name } = req.body;
+  let category = await algorithmCategoryController.addAlgorithmCategory(name);
+  if (!category)
+    return res.status(400).json({ message: "Category already exists" });
+  res.status(200).json(category);
+});
+
+router.put("/categories/:id", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let { id, name } = req.body;
+  let category = await algorithmCategoryController.updateAlgorithmCategory(
+    id,
+    name
+  );
+  if (!category) return res.status(400).json({ message: "Category not found" });
+  res.status(200).json(category);
+});
+
+router.delete("/categories/:id", async (req, res) => {
+  if (!req.session.userId)
+    return res.status(400).json({ message: "Not logged in" });
+  let category = await algorithmCategoryController.deleteAlgorithmCategory(
+    req.params.id
+  );
+  if (!category) return res.status(400).json({ message: "Category not found" });
+  res.status(200).json(category);
 });
 
 module.exports = router;

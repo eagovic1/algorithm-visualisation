@@ -1,0 +1,54 @@
+#admin-categories-root #title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2.5px;
+}
+
+#admin-categories-table {
+  margin: 0;
+  border: 1px solid #000;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#admin-categories-table table,
+th,
+td {
+  margin: 0;
+  border: 1px solid #000;
+}
+
+#admin-categories-table th,
+td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+#admin-categories-table .action-icon {
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+}
+
+#admin-categories-table .action-icon:hover {
+  cursor: pointer;
+}
+
+#add-category-button {
+  margin-top: 20px;
+  font-size: medium;
+  border-radius: 50px;
+  font-weight: bold;
+  border: 1px solid #000;
+}
+
+#add-category-button .action-icon {
+  margin-right: 10px;
+}
+
+#add-category-button:hover {
+  background-color: #dddddd;
+}

@@ -13,6 +13,8 @@ import ComparisonHomePage from "./pages/ComparisonHomePage/ComparisonHomePage";
 import ComparisonResultPage from "./pages/ComparisonResultPage/ComparisonResultPage";
 import VisualisationHomePage from "./pages/VisualisationHomePage/VisualisationHomePage";
 import AdminPanelUsers from "./pages/AdminPanelUsers/AdminPanelUsers";
+import AdminPanelCategories from "./pages/AdminPanelCategories/AdminPanelCategories";
+import AdminPanelAlgorithms from "./pages/AdminPanelAlgorithms/AdminPanelAlgorithms";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
         />{" "}
         {}
         <Route path="/admin/users" element={<AdminPanelUsers />} />
+        <Route path="/admin/categories" element={<AdminPanelCategories />} />
+        <Route path="/admin/algorithms" element={<AdminPanelAlgorithms />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
