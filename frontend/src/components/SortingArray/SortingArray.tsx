@@ -89,7 +89,7 @@ const SortingArray = (props: SortingArrayProps) => {
   return (
     <div id="rootSortingArray">
       <div>
-        <h3>{instructions[currentStep - 1]["description"]}</h3>
+        <h3 id="description">{instructions[currentStep - 1]["description"]}</h3>
       </div>
       <div id="array">
         {array.map((element: number, index: number) => {
@@ -106,7 +106,7 @@ const SortingArray = (props: SortingArrayProps) => {
         })}
       </div>
       <div>
-        <h3>
+        <h3 id="steps">
           STEP: {currentStep}/{instructions.length}
         </h3>
       </div>

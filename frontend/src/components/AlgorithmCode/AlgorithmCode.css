@@ -1,0 +1,10 @@
+#algorithm-code-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  width: 600px;
+  max-height: 500px;
+  max-width: 500px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+}
