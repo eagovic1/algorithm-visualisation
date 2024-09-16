@@ -33,8 +33,10 @@ function bubbleSort(array) {
   let memoryUsed = 0;
   let writeOperations = 0;
   let readOperations = 0;
-  const timeComplexity = "O(n^2)";
   const spaceComplexity = "O(1)";
+  const worstTimeComplexity = "O(n^2)";
+  const averageTimeComplexity = "O(n^2)";
+  const bestTimeComplexity = "O(n)";
 
   let start = performance.now(); // Use performance.now() for more accurate timing
 
@@ -70,8 +72,10 @@ function bubbleSort(array) {
     memoryUsed,
     writeOperations,
     readOperations,
-    timeComplexity,
     spaceComplexity,
+    worstTimeComplexity,
+    averageTimeComplexity,
+    bestTimeComplexity,
   };
 }
 
@@ -87,8 +91,10 @@ function selectionSort(array) {
   let memoryUsed = 0;
   let writeOperations = 0;
   let readOperations = 0;
-  const timeComplexity = "O(n^2)";
   const spaceComplexity = "O(1)";
+  const worstTimeComplexity = "O(n^2)";
+  const averageTimeComplexity = "O(n^2)";
+  const bestTimeComplexity = "O(n^2)";
 
   let start = performance.now(); // Use performance.now() for more accurate timing
 
@@ -124,8 +130,10 @@ function selectionSort(array) {
     memoryUsed,
     writeOperations,
     readOperations,
-    timeComplexity,
     spaceComplexity,
+    worstTimeComplexity,
+    averageTimeComplexity,
+    bestTimeComplexity,
   };
 }
 
