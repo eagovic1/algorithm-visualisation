@@ -98,9 +98,19 @@ const ComparisonResultPage = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Time Complexity</td>
-              <td>{algorithmFirst.timeComplexity}</td>
-              <td>{algorithmSecond.timeComplexity}</td>
+              <td>Time Complexity (WorstCase)</td>
+              <td>{algorithmFirst.worstTimeComplexity}</td>
+              <td>{algorithmSecond.worstTimeComplexity}</td>
+            </tr>
+            <tr>
+              <td>Time Complexity (AverageCase)</td>
+              <td>{algorithmFirst.averageTimeComplexity}</td>
+              <td>{algorithmSecond.averageTimeComplexity}</td>
+            </tr>
+            <tr>
+              <td>Time Complexity (BestCase)</td>
+              <td>{algorithmFirst.bestTimeComplexity}</td>
+              <td>{algorithmSecond.bestTimeComplexity}</td>
             </tr>
             <tr>
               <td>Space Complexity</td>
