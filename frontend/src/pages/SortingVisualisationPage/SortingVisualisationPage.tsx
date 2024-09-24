@@ -1,4 +1,3 @@
-import React from "react";
 import SortingArray from "../../components/SortingArray/SortingArray";
 import { useLocation } from "react-router-dom";
 import AlgorithmCode from "../../components/AlgorithmCode/AlgorithmCode";
@@ -12,7 +11,7 @@ const SortingVisualisationPage = () => {
     <>
       <div id="sorting-visualisation-page">
         <SortingArray array={array} instructions={instructions} />
-        <AlgorithmCode></AlgorithmCode>
+        <AlgorithmCode />
       </div>
     </>
   );

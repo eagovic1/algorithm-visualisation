@@ -1,22 +1,32 @@
 import React from "react";
+import { useSpring, animated } from "@react-spring/web";
 import "./ArrayElement.css";
 
 interface ArrayElementProps {
   value: number;
-  index: number;
   tag?: string;
+  maxElement: number;
 }
 
 const ArrayElement = (props: ArrayElementProps) => {
+  const { value, tag } = props;
+
+  // Animate the inner height only based on the value
+  const styles = useSpring({
+    height: `${60 + (
+      (value / props.maxElement) * 100
+    )}px`, // Height change based on value
+    config: { tension: 50, friction: 12 }, // Smooth animation
+  });
+
   return (
-    <div id="rootArrayElement">
-        <div className="elementIndex">{props.index}</div>
-      <div
-        className={"arrayElement " + (props.tag && "taggedElement")}
-        style={{ height: `${60 + (props.value - 1)*25}px` }}
+    <div id="rootArrayElement"> {/* The wrapper div shouldn't bounce */}
+      <animated.div
+        className={"arrayElement " + (tag ? "taggedElement" : "")}
+        style={styles}
       >
-        {props.value}
-      </div>
+        {value}
+      </animated.div>
     </div>
   );
 };

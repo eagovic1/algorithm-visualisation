@@ -5,6 +5,7 @@ import RightArrow from "../../assets/images/right.png";
 import Play from "../../assets/images/play.png";
 import Pause from "../../assets/images/pause.png";
 import Restart from "../../assets/images/restart.png";
+import { Toast } from "react-bootstrap";
 
 interface StepControlProps {
   currentStep: number;
@@ -23,7 +24,7 @@ const StepControl = (props: StepControlProps) => {
     if (playing) {
       const timeout = setTimeout(() => {
         nextStep();
-      }, 1000);
+      }, 1500);
       return () => clearInterval(timeout);
     }
   }, [playing, props.currentStep]);

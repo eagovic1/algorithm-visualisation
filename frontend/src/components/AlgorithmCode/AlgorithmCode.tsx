@@ -1,9 +1,6 @@
-import {
-  height,
-  width,
-} from "@fortawesome/free-regular-svg-icons/faAddressBook";
 import "./AlgorithmCode.css";
-import { dracula, CodeBlock, monoBlue, github } from "react-code-blocks";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const code = ` function bubbleSort(array) {
   let n = array.length;
@@ -20,12 +17,6 @@ const code = ` function bubbleSort(array) {
 }
 `;
 
-const customStyles = {
-  textAlign: "left",
-  fontSize: "20px",
-  width: "100%",
-};
-
 const language = "javascript";
 const showLineNumbers = true;
 const startingLineNumber = 1;
@@ -33,14 +24,16 @@ const startingLineNumber = 1;
 const AlgorithmCode = () => {
   return (
     <div id="algorithm-code-root">
-      <CodeBlock
-        customStyle={customStyles}
-        text={code}
+      <SyntaxHighlighter
         language={language}
-        showLineNumbers={showLineNumbers}
         startingLineNumber={startingLineNumber}
-        theme={dracula}
-      />
+        showLineNumbers={showLineNumbers}
+        customStyle={{ fontSize: "20px", margin: 0 }}
+        style={dracula}
+      >
+        {code}
+
+      </SyntaxHighlighter>
     </div>
   );
 };
