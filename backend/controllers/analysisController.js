@@ -80,7 +80,56 @@ function bubbleSort(array) {
 }
 
 function insertionSort(array) {
-  throw "Not implemented";
+  const name = "Insertion Sort";
+  let comparisons = 0;
+  let swaps = 0;
+  let timeTaken = 0;
+  let memoryUsed = 0;
+  let writeOperations = 0;
+  let readOperations = 0;
+  const spaceComplexity = "O(1)";
+  const worstTimeComplexity = "O(n^2)";
+  const averageTimeComplexity = "O(n^2)";
+  const bestTimeComplexity = "O(n)";
+
+  let start = performance.now(); // Use performance.now() for more accurate timing
+
+  for (let i = 1; i < array.length; i++) {
+    let j = i;
+
+    while (j > 0) {
+      comparisons++;
+      readOperations += 2; // Read array[j - 1] and array[j]
+      if (array[j - 1] > array[j]) {
+        swaps++;
+        writeOperations += 3; // Write to array[j], array[j - 1], and temp variable
+        let temp = array[j];
+        array[j] = array[j - 1];
+        array[j - 1] = temp;
+        j--;
+      } else {
+        break;
+      }
+    }
+  }
+
+  let end = performance.now(); // Use performance.now() for more accurate timing
+  timeTaken = end - start;
+  memoryUsed = array.length * 4; // Assuming each int takes 4 bytes of memory
+
+  return {
+    name,
+    comparisons,
+    swaps,
+    timeTaken,
+    memoryUsed,
+    writeOperations,
+    readOperations,
+    spaceComplexity,
+    worstTimeComplexity,
+    averageTimeComplexity,
+    bestTimeComplexity,
+  };
 }
 
 function selectionSort(array) {
@@ -138,11 +187,131 @@ function selectionSort(array) {
 }
 
 function shellSort(array) {
-  throw "Not implemented";
+  const name = "Shell Sort";
+  let comparisons = 0;
+  let swaps = 0;
+  let timeTaken = 0;
+  let memoryUsed = 0;
+  let writeOperations = 0;
+  let readOperations = 0;
+  const spaceComplexity = "O(1)";
+  const worstTimeComplexity = "O(n^2)";
+  const averageTimeComplexity = "O(n^1.5)";
+  const bestTimeComplexity = "O(n log n)";
+
+  let start = performance.now(); // Use performance.now() for more accurate timing
+
+  let n = array.length;
+  let gap = Math.floor(n / 2);
+
+  while (gap > 0) {
+    for (let i = gap; i < n; i++) {
+      let temp = array[i];
+      let j = i;
+
+      while (j >= gap && array[j - gap] > temp) {
+        comparisons++;
+        readOperations += 2; // Read array[j - gap] and temp
+        writeOperations++; // Write to array[j]
+        array[j] = array[j - gap];
+        j -= gap;
+      }
+
+      writeOperations++; // Write to array[j]
+      array[j] = temp;
+    }
+
+    gap = Math.floor(gap / 2);
+  }
+
+  let end = performance.now(); // Use performance.now() for more accurate timing
+  timeTaken = end - start;
+  memoryUsed = array.length * 4; // Assuming each int takes 4 bytes of memory
+
+  return {
+    name,
+    comparisons,
+    swaps,
+    timeTaken,
+    memoryUsed,
+    writeOperations,
+    readOperations,
+    spaceComplexity,
+    worstTimeComplexity,
+    averageTimeComplexity,
+    bestTimeComplexity,
+  };
 }
 
 function quickSort(array) {
-  throw "Not implemented";
+  const name = "Quick Sort";
+  let comparisons = 0;
+  let swaps = 0;
+  let timeTaken = 0;
+  let memoryUsed = 0;
+  let writeOperations = 0;
+  let readOperations = 0;
+  const spaceComplexity = "O(log n)";
+  const worstTimeComplexity = "O(n^2)";
+  const averageTimeComplexity = "O(n log n)";
+  const bestTimeComplexity = "O(n log n)";
+
+  let start = performance.now(); // Use performance.now() for more accurate timing
+
+  function partition(arr, low, high) {
+    let pivot = arr[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+      comparisons++;
+      readOperations += 2; // Read array[j] and pivot
+      if (arr[j] < pivot) {
+        i++;
+        swaps++;
+        writeOperations += 3; // Write to array[i], array[j], and temp
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    swaps++;
+    writeOperations += 3; // Write to array[i + 1], array[high], and temp
+    let temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+  }
+
+  function quickSortHelper(arr, low, high) {
+    if (low < high) {
+      let pi = partition(arr, low, high);
+
+      quickSortHelper(arr, low, pi - 1);
+      quickSortHelper(arr, pi + 1, high);
+    }
+  }
+
+  quickSortHelper(array, 0, array.length - 1);
+
+  let end = performance.now(); // Use performance.now() for more accurate timing
+  timeTaken = end - start;
+  memoryUsed = array.length * 4; // Assuming each int takes 4 bytes of memory
+
+  return {
+    name,
+    comparisons,
+    swaps,
+    timeTaken,
+    memoryUsed,
+    writeOperations,
+    readOperations,
+    spaceComplexity,
+    worstTimeComplexity,
+    averageTimeComplexity,
+    bestTimeComplexity,
+  };
 }
 
 function heapSort(array) {

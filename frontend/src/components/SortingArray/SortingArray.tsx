@@ -13,6 +13,7 @@ enum InstructionType {
 interface Instruction {
   type: InstructionType;
   clear: boolean;
+  pivot: boolean;
   operands: number[];
   description: string;
 }
@@ -26,6 +27,7 @@ const SortingArray = (props: SortingArrayProps) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [taggedElements, setTaggedElements] = useState<number[]>([]);
   const [array, setArray] = useState<number[]>([...props.array]);
+  const [pivotElement, setPivotElement] = useState<number>(0);
 
   let instructions = props.instructions;
   let maxElement = Math.max(...array);
@@ -47,6 +49,11 @@ const SortingArray = (props: SortingArrayProps) => {
         ...taggedElements,
         ...currentInstruction.operands,
       ]);
+      /*
+      if (currentInstruction.pivot) {
+        setPivotElement(currentInstruction.operands[0]);
+      }
+        */
     }
 
     if (currentInstruction.type === InstructionType.COMPARE) {
@@ -81,6 +88,7 @@ const SortingArray = (props: SortingArrayProps) => {
           return (
             <ArrayElement
               tag={taggedElements.includes(index) ? "tagged" : undefined}
+              pivot={pivotElement === element}
               key={index}
               value={element}
               maxElement={maxElement}

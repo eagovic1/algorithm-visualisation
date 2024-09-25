@@ -6,6 +6,7 @@ interface ArrayElementProps {
   value: number;
   tag?: string;
   maxElement: number;
+  pivot: boolean;
 }
 
 const ArrayElement = (props: ArrayElementProps) => {
@@ -22,7 +23,7 @@ const ArrayElement = (props: ArrayElementProps) => {
   return (
     <div id="rootArrayElement"> {/* The wrapper div shouldn't bounce */}
       <animated.div
-        className={"arrayElement " + (tag ? "taggedElement" : "")}
+        className={"arrayElement " + (tag ? "taggedElement" : "") + (props.pivot ? " pivotElement" : "")}
         style={styles}
       >
         {value}
