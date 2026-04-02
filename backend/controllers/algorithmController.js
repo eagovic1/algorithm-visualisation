@@ -19,16 +19,17 @@ async function getAlgorithmById(id) {
   }
 }
 
+const ALGORITHMS = [
+  { id: 1, name: "Bubble Sort", key: "bubble", category: { name: "Sorting" } },
+  { id: 2, name: "Selection Sort", key: "selection", category: { name: "Sorting" } },
+  { id: 3, name: "Insertion Sort", key: "insertion", category: { name: "Sorting" } },
+  { id: 4, name: "Quick Sort", key: "quick", category: { name: "Sorting" } },
+  { id: 5, name: "Shell Sort", key: "shell", category: { name: "Sorting" } },
+];
+
 async function getAllAlgorithms() {
   try {
-    return await db.algorithm.findAll({
-      include: [
-        {
-          model: db.category,
-          as: "category",
-        },
-      ],
-    });
+    return ALGORITHMS;
   } catch (e) {
     console.log(e);
     return null;

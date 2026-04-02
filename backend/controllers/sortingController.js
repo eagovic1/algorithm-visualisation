@@ -274,10 +274,25 @@ function partition(arr, low, high, instructions) {
 }
 
 
+function getSortingSteps(key, arr) {
+  const algorithms = {
+    bubble: bubbleSort,
+    selection: selectionSort,
+    insertion: insertionSort,
+    quick: quickSort,
+    shell: shellSort,
+  };
+
+  const sortFn = algorithms[key];
+  if (!sortFn) return null;
+  return sortFn(arr);
+}
+
 module.exports = {
   bubbleSort,
   selectionSort,
   insertionSort,
   shellSort,
   quickSort,
+  getSortingSteps,
 };
