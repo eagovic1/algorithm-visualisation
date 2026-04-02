@@ -15,6 +15,7 @@ import VisualisationHomePage from "./pages/VisualisationHomePage/VisualisationHo
 import AdminPanelUsers from "./pages/AdminPanelUsers/AdminPanelUsers";
 import AdminPanelCategories from "./pages/AdminPanelCategories/AdminPanelCategories";
 import AdminPanelAlgorithms from "./pages/AdminPanelAlgorithms/AdminPanelAlgorithms";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -23,26 +24,42 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route
+          path="/home"
+          element={<ProtectedRoute element={<HomePage />} />}
+        />
         <Route
           path="/input/sorting/:algorithmKey"
-          element={<SortingInputPage />}
+          element={<ProtectedRoute element={<SortingInputPage />} />}
         />
-        <Route path="/visualisation" element={<VisualisationHomePage />} /> {}
+        <Route
+          path="/visualisation"
+          element={<ProtectedRoute element={<VisualisationHomePage />} />}
+        />
         <Route
           path="/visualisation/sorting/:algorithmKey"
-          element={<SortingVisualisationPage />}
-        />{" "}
-        {}
-        <Route path="/comparison" element={<ComparisonHomePage />} /> {}
+          element={<ProtectedRoute element={<SortingVisualisationPage />} />}
+        />
+        <Route
+          path="/comparison"
+          element={<ProtectedRoute element={<ComparisonHomePage />} />}
+        />
         <Route
           path="/comparison/result/:algorithmKey/:algorithmKeySec"
-          element={<ComparisonResultPage />}
-        />{" "}
-        {}
-        <Route path="/admin/users" element={<AdminPanelUsers />} />
-        <Route path="/admin/categories" element={<AdminPanelCategories />} />
-        <Route path="/admin/algorithms" element={<AdminPanelAlgorithms />} />
+          element={<ProtectedRoute element={<ComparisonResultPage />} />}
+        />
+        <Route
+          path="/admin/users"
+          element={<ProtectedRoute element={<AdminPanelUsers />} />}
+        />
+        <Route
+          path="/admin/categories"
+          element={<ProtectedRoute element={<AdminPanelCategories />} />}
+        />
+        <Route
+          path="/admin/algorithms"
+          element={<ProtectedRoute element={<AdminPanelAlgorithms />} />}
+        />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>

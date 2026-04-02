@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import { fetchData } from "../../services/fetch";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "./LoginPage.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    console.log("Login clicked");
-    fetchData("http://localhost:3000/api/user/login", "POST", {
-      username: username,
-      password: password,
-    }).then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        alert("Login successful");
-        localStorage.setItem("userData", JSON.stringify(response.data));
+    login(username, password).then((success) => {
+      if (success) {
         navigate("/home");
       } else {
-        alert("Invalid username or password");
+        setError("Invalid username or password");
       }
     });
   }
@@ -29,6 +24,7 @@ const LoginPage = () => {
   return (
     <div className="login-form-container">
       <h1>Login</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           placeholder="Username"
