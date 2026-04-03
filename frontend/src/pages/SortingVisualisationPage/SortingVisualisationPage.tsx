@@ -5,13 +5,12 @@ import "./SortingVisualisationPage.css";
 
 const SortingVisualisationPage = () => {
   const location = useLocation();
-  const instructions = location.state.instructions;
-  const array = location.state.array;
+  const { instructions, array, code } = location.state;
   return (
     <>
       <div id="sorting-visualisation-page">
         <SortingArray array={array} instructions={instructions} />
-        <AlgorithmCode />
+        <AlgorithmCode code={code} />
       </div>
     </>
   );

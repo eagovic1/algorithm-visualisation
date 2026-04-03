@@ -47,9 +47,9 @@ const VisualisationHomePage = () => {
     setSnackbarOpen(true);
   };
 
-  function handleClick(algorithmKey: string) {
+  function handleClick(algorithmKey: string, code: string) {
     const category = "sorting";
-    navigate(`/input/${category}/${algorithmKey}`);
+    navigate(`/input/${category}/${algorithmKey}`, { state: { code } });
   }
 
   if (!algorithmsLoaded || !favoriteAlgorithmsLoaded) {
@@ -65,7 +65,7 @@ const VisualisationHomePage = () => {
             <div
               key={algorithm["id"]}
               className="algorithm-card"
-              onClick={() => handleClick(algorithm["key"])}
+              onClick={() => handleClick(algorithm["key"], algorithm["code"])}
             >
               <div className="detail-wrap">
                 <p className="algorithm-name">{algorithm["name"]}</p>
