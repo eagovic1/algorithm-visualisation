@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 // Create a new Sequelize instance
 db = {};
-db.sequelize = new Sequelize("algoviz", "root", "password", {
+db.sequelize = new Sequelize("algoviz", "root", "", {
   host: "localhost",
   dialect: "mysql",
 });
